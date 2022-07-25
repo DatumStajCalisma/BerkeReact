@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom";
 import ProductService from "../services/productService";
 
 export default function ProductList() {
@@ -26,7 +27,11 @@ export default function ProductList() {
         <tbody>
           {products.map((product) => (
             <tr key={product.id}>
-              <td>{product.productName}</td>
+              <td>
+                <Link to={`/products/${product.productName}`}>
+                  {product.productName}
+                </Link>
+              </td>
               <td>{product.unitPrice}</td>
               <td>{product.unitsInStock}</td>
               <td>{product.quantityPerUnit}</td>

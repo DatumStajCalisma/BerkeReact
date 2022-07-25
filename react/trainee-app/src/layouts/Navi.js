@@ -8,12 +8,16 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
+import { useNavigate } from "react-router-dom";
 export default function Navi() {
   //default false because this is an authentication
   const [isAuthenticated, setisAuthenticated] = useState(true);
 
+  const history = useNavigate();
+
   function handleSignOut() {
     setisAuthenticated(false);
+    history("/");
   }
 
   function handleSignIn() {
@@ -47,7 +51,7 @@ export default function Navi() {
             {isAuthenticated ? (
               <SignedIn signOut={handleSignOut} something="1" />
             ) : (
-              <SignedOut signIn={handleSignIn} something="1" />
+              <SignedOut signIn={handleSignIn} />
             )}
           </Navbar.Collapse>
         </Container>

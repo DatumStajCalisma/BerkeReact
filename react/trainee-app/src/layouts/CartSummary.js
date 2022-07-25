@@ -1,5 +1,5 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 export default function CartSummary() {
@@ -8,14 +8,16 @@ export default function CartSummary() {
       <DropdownButton
         className="m-3"
         variant="outline-secondary"
-        title="Dropdown"
+        title="Cart"
         id="input-group-dropdown-1"
       >
-        <Dropdown.Item href="#">Action</Dropdown.Item>
-        <Dropdown.Item href="#">Another action</Dropdown.Item>
-        <Dropdown.Item href="#">Something else here</Dropdown.Item>
+        <Dropdown.Item>Product 1</Dropdown.Item>
+        <Dropdown.Item>Product 2</Dropdown.Item>
+        <Dropdown.Item>Product 3</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item href="#">Separated link</Dropdown.Item>
+        <Dropdown.Item as={NavLink} to="/cart">
+          Go to cart
+        </Dropdown.Item>
       </DropdownButton>
     </div>
   );

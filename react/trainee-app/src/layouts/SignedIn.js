@@ -1,7 +1,7 @@
 import React from "react";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-export default function SignedIn(signOut) {
+export default function SignedIn(props) {
   return (
     <div>
       <DropdownButton
@@ -10,9 +10,7 @@ export default function SignedIn(signOut) {
         title="Username"
       >
         <Dropdown.Item href="#">Information</Dropdown.Item>
-        <Dropdown.Item onClick={signOut} href="#">
-          Sign Out
-        </Dropdown.Item>
+        <Dropdown.Item onClick={props.signOut}>Sign Out</Dropdown.Item>
       </DropdownButton>
     </div>
   );
