@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CartSummary from "./CartSummary";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -9,6 +9,16 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 export default function Navi() {
+  //default false because this is an authentication
+  const [isAuthenticated, setisAuthenticated] = useState(true);
+
+  function handleSignOut() {
+    setisAuthenticated(false);
+  }
+
+  function handleSignIn() {
+    setisAuthenticated(true);
+  }
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -34,8 +44,11 @@ export default function Navi() {
               </Nav.Link>
             </Nav>
             <CartSummary />
-            <SignedOut />
-            <SignedIn />
+            {isAuthenticated ? (
+              <SignedIn signOut={handleSignOut} something="1" />
+            ) : (
+              <SignedOut signIn={handleSignIn} something="1" />
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
