@@ -9,7 +9,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function Navi() {
+  const { cartItems } = useSelector((state) => state.cart);
+
   //default false because this is an authentication
   const [isAuthenticated, setisAuthenticated] = useState(true);
 
@@ -47,7 +50,8 @@ export default function Navi() {
                 Link
               </Nav.Link>
             </Nav>
-            <CartSummary />
+
+            {cartItems.length > 0 && <CartSummary />}
             {isAuthenticated ? (
               <SignedIn signOut={handleSignOut} something="1" />
             ) : (

@@ -3,12 +3,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Route, Routes } from "react-router-dom";
 import Categories from "./Categories";
-import CartDetail from "./CartDetail";
+import CartDetail from "../pages/CartDetail";
 import ProductList from "../pages/ProductList";
 import ProductDetail from "../pages/ProductDetail";
+import { ToastContainer } from "react-toastify";
 export default function Dashboard() {
   return (
     <div>
+      <ToastContainer style={{ width: "4px" }} position="bottom-right" />
       <Row>
         <Col xs={12} md={4}>
           <Categories />
